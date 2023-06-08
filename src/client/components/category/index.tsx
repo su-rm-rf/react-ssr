@@ -12,12 +12,10 @@ export default () => {
   const doIncrement = () => {
     console.log(count)
     dispatch(increment())
-    console.log('12')
   }
   const doDecrement = () => {
     console.log(count)
     dispatch(decrement())
-    console.log('34')
   }
 
   return (
