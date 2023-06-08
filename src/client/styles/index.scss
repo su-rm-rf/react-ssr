@@ -1,0 +1,25 @@
+@import './reset.scss';
+
+body {
+  font-size: .32rem;
+}
+.main_body {
+  height: calc(100vh - 1.02rem);
+}
+.nav_footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  width: 100vw;
+  line-height: 1rem;
+  text-align: center;
+  border-top: .02rem solid #ccc;
+  a {
+    flex: 1;
+    color: #000;
+    &.active {
+      color: #f00;
+    }
+  }
+}
