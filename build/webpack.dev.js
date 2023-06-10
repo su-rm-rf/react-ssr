@@ -14,11 +14,11 @@ const client = merge(common, {
   target: 'web',
 })
 
-const server = merge(common, {
-  entry: './server/main.tsx',
+const ssr = merge(common, {
+  entry: './ssr/main.tsx',
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: 'server.bundle.js',
+    filename: 'ssr.bundle.js',
     publicPath: '/',
     globalObject: 'this',
   },
@@ -27,4 +27,4 @@ const server = merge(common, {
   target: 'node',
 })
 
-module.exports = [client, server]
+module.exports = [client, ssr]

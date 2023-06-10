@@ -1,20 +1,39 @@
 {
-  "name": "react-ssr",
+  "name": "react-ssr-bff-server",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack -c ./build/webpack.dev.js --watch",
-    "prod": "webpack -c ./build/webpack.dev.js",
-    "ssr": "cross-env NODE_ENV=development nodemon ./dist/server.bundle.js",
-    "test": "jest"
+    "client:dev": "cross-env NODE_ENV=development BASE_ENV=development webpack -c ./build/webpack.dev.js --watch",
+    "client:test": "cross-env NODE_ENV=test BASE_ENV=development webpack -c ./build/webpack.dev.js",
+    "client:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack -c ./build/webpack.dev.js",
+
+    "ssr:dev": "cross-env NODE_ENV=development BASE_ENV=development nodemon ./dist/ssr.bundle.js",
+    "ssr:test": "cross-env NODE_ENV=test BASE_ENV=development nodemon ./dist/ssr.bundle.js",
+    "ssr:prod": "cross-env NODE_ENV=production BASE_ENV=production nodemon ./dist/ssr.bundle.js",
+    
+    "bff:dev": "cross-env NODE_ENV=development BASE_ENV=development nodemon ./src/bff/main.ts",
+    "bff:test": "cross-env NODE_ENV=test BASE_ENV=development nodemon ./src/bff/main.ts",
+    "bff:prod": "cross-env NODE_ENV=production BASE_ENV=production nodemon ./src/bff/main.ts",
+    
+    "server:dev": "cross-env NODE_ENV=development BASE_ENV=development nodemon ./src/server/main.ts",
+    "server:test": "cross-env NODE_ENV=test BASE_ENV=development nodemon ./src/server/main.ts",
+    "server:prod": "cross-env NODE_ENV=production BASE_ENV=production nodemon ./src/server/main.ts",
+    
+    "test:dev": "jest",
+    "test:test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/koa": "^2.13.6",
+    "@types/koa-router": "^7.4.4",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
+    "koa": "^2.14.2",
+    "koa-router": "^12.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-redux": "^8.0.7",
