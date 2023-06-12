@@ -30,6 +30,21 @@ module.exports = {
             }
           },
           'sass-loader',
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                presets: ['@postcss-preset-env']
+              }
+            }
+          },
           'less-loader',
         ]
       },

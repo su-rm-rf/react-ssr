@@ -1,0 +1,23 @@
+.category_list {
+  padding: .2rem .3rem;
+  li {
+    margin: .2rem 0;
+    div {
+      font-weight: bold;
+      line-height: .6rem;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      a {
+        width: 25%;
+        text-align: center;
+        line-height: .6rem;
+        font-size: .28rem;
+        &:hover {
+          color: #f00;
+        }
+      }
+    }
+  }
+}

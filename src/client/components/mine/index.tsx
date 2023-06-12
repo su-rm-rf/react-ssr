@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Layout from '@/components/Layout'
+import FooterNav from '@/components/FooterNav'
 
 export default () => {
   return (
     <div>
       mine
-      <Layout />
+      <FooterNav />
     </div>
   )
 }

@@ -8,9 +8,11 @@ import { store } from '@/store'
 
 hydrateRoot(
   document.querySelector('#root') as Element,
-  <Provider store={ store }>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
+  // <React.StrictMode>
+    <Provider store={ store }>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  // </React.StrictMode>
 )

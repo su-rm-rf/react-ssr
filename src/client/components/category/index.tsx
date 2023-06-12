@@ -1,32 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import Layout from '@/components/Layout'
+import FooterNav from '@/components/FooterNav'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { increment, decrement } from '@/store/counterSlice'
+import { getList } from '@/store/categorySlice'
 
 export default () => {
-  const count = useSelector((state:any) => state.counter.value)
+  const list = useSelector((state:any) => state.category.list)
+
   const dispatch = useDispatch()
 
-  const doIncrement = () => {
-    console.log(count)
-    dispatch(increment())
-  }
-  const doDecrement = () => {
-    console.log(count)
-    dispatch(decrement())
-  }
+  useEffect(() => {
+    dispatch(getList())
+  }, [])
 
   return (
     <div>
-      category
-      <button onClick={ () => doIncrement() }>新增</button>
-      <span>{ count }</span>
-      <button onClick={ doDecrement }>减少</button>
-
-      <Link to="/category/1">品类1</Link>
-      <Layout />
+      <ul className="category_list">
+        {
+          list.map(item =>
+            <li key={ item.id }>
+              <div>{ item.name }</div>
+              <nav>
+                {
+                  item.category2s.map(item2 => 
+                    <Link to={ `/category/${item2.id}` } key={ item2.id }>{ item2.name }</Link>
+                  )
+                }
+              </nav>
+            </li>
+          )
+        }
+      </ul>
+      <FooterNav />
     </div>
   )
 }
