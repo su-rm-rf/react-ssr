@@ -13,6 +13,9 @@ export class Category2 {
   @Column({ nullable: true })
   name?: string
 
+  @Column()
+  id_1?: number
+
   // @Column({
   //   name: "id_1"
   // })
@@ -22,6 +25,7 @@ export class Category2 {
   // @JoinColumn()
   @ManyToOne(type => Category1, category1 => category1.category2s)
   // id_1?: number
-  fkid?: Category1
+  @JoinColumn({ name: 'id_1' })
+  category1?: Category1
 
 }

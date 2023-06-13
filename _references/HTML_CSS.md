@@ -6,6 +6,9 @@ MutationObserver
 # CSS2
 
 # CSS3
+flex
+  一行显示4个: display: flex; flex-wrap: wrap;      width: 25%;
+
 预处理器
   在vite中，通过css.preprocessorOptions.scss.additionalData给每个vue文件的style注入共用的scss文件
 

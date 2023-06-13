@@ -1,9 +1,12 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack')
+
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   context: path.resolve(__dirname, '../src'),
-  mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
+  mode: isProd ? 'production' : 'development',
   module: {
     rules: [
       {
@@ -50,19 +53,27 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
-        type: 'asset/resource'
+        type: 'asset/resource',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024
+          }
+        }
       },
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.scss', '.less'],
+    extensions: ['.tsx', '.ts', '.js', '.json', '.scss', '.less'],
     alias: {
       '@': path.join(__dirname, '../src/client'),
     }
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'main.css',
+      filename: 'client.main.css',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV),
     }),
   ]
 }

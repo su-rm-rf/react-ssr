@@ -16,6 +16,8 @@ export default class CategoryController {
   async detail (ctx) {
     const { id } = ctx.params
     const category2Repository = AppDataSource.getRepository(Category2)
+
+    const c2 = new Category2()
   
     const detail = await category2Repository.findOneBy({ id })
     console.log(detail)

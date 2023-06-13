@@ -16,7 +16,7 @@ export class Category1 {
   @Column()
   name?: string
 
-  @OneToMany(type => Category2, category2 => category2.fkid)
+  @OneToMany(type => Category2, category2 => category2.category1)
   category2s?: Category2[]
 
 }

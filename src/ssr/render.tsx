@@ -6,6 +6,11 @@ import { Provider } from 'react-redux'
 import App from '@/App'
 import { store } from '@/store'
 
+console.log(process.env.NODE_ENV)
+console.log(process.env.BASE_ENV)
+
+const JS_URL = process.env.BASE_ENV === 'production' ? '/client.prod.bundle.js' : '/client.bundle.js'
+
 export default (req, res) => {
   const { pipe } = renderToPipeableStream(
     <Provider store={ store }>
@@ -14,7 +19,7 @@ export default (req, res) => {
       </StaticRouter>
     </Provider>
   , {
-    bootstrapScripts: ['/client.bundle.js'],
+    bootstrapScripts: [JS_URL],
     onShellReady() {
       res.statusCode = 200
       res.setHeader('Content-Type', 'text/html; charset=utf-8')
@@ -30,7 +35,7 @@ export default (req, res) => {
             domEl.style.fontSize = domElWidth / 7.5 + 'px'
           </script>
           <link rel="shortcut icon" type="images/x-icon" href="/favicon.ico" />
-          <link rel="stylesheet" href="/main.css" />
+          <link rel="stylesheet" href="/client.main.css" />
         </head>
         <body>
         <div id="root">`)

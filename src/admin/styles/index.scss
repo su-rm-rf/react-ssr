@@ -1,0 +1,35 @@
+@import './reset.scss';
+@import './variables.scss';
+
+body {
+  font-size: .32rem;
+}
+
+.app {
+  .header {
+    height: 2rem;
+    background: #ea2;
+  }
+  .body {
+    height: calc(100vh - 2rem);
+    display: flex;
+    .nav_aside {
+      width: 10vw;
+      min-height: calc(100vh - 2rem);
+      background: #2ae;
+      overflow-y: auto;
+    }
+    .main_body {
+      width: 90vw;
+      overflow-y: auto;
+      .section {
+        min-height: calc(100vh - 3rem);
+        background: #ae2;
+      }
+      .footer {
+        height: 1rem;
+        background: #e2a;
+      }
+    }
+  }
+}
