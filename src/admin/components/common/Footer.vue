@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div>
-    <footer class="footer">底部</footer>
+  <div class="footer">
+    版权所有@2020-2027
   </div>
 </template>
 

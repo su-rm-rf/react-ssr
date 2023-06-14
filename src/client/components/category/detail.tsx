@@ -11,8 +11,6 @@ export default () => {
 
   const { id } = useParams()
 
-  console.log(detail)
-
   useEffect(() => {
     dispatch(getDetail(id))
   }, [])
@@ -20,17 +18,12 @@ export default () => {
   return (
     <div>
       <ul>
-        {/* {
-          detail.map(item => 
-            <li key={ item.id }>
-              <span>{ item.name }</span>
-            </li>  
-          )
-        } */}
+        <li>{ detail.id }</li>
+        <li>{ detail.name }</li>
+        <li>{ detail.price }元</li>
+        <li>{ detail.category_id }</li>
       </ul>
-      {
-        detail.name
-      }
+      <button></button>
     </div>
   )
 }

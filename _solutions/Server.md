@@ -1,16 +1,42 @@
 # 表结构
-Category_1 (
+Category (
   id int,
   name: varchar,
   primary key (id)
 )
-Category_2 (
+Goods (
   id int,
   name: varchar,
-  1_id int,
+  category_id int,
   primary key (id),
-  constraint fkn foreign key (1_id) references Category_1 (id)
+  constraint fkn foreign key (category_id) references Category (id)
 )
+User {
+  id int,
+  username varchar,
+  password varchar,
+  level int
+}
+Cart {
+  id int,
+  user int
+}
+Cart_Item {
+  id int,
+  goods_id int,
+  amount int,
+  cart_id int
+}
+Order {
+  id int,
+  user int
+}
+Order_Item {
+  id int,
+  goods_id int,
+  amount int,
+  order_id int
+}
 
 # dotenv配置全局变量
 键值对，值只能是字符串类型
@@ -32,4 +58,7 @@ Category_2 (
     connect.release()
 
 
+# TypeORM
+JoinColumn({ name: fkn }) 在从表中，把ManyToOne的Column映射到fkn上，数据库里合并成一个字段
+JoinTable()
 

@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const webpack = require('webpack')
+// const CopyPlugin = require('copy-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -13,7 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'admin.bundle.js',
-    publicPath: '/',
+    publicPath: '/admin/',
   },
   module: {
     rules: [
@@ -65,10 +66,10 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
-        type: 'asset/resource',
+        type: 'asset',
         parser: {
           dataUrlCondition: {
-            maxSize: 10 * 1024
+            maxSize: 30 * 1024
           }
         }
       },
@@ -93,5 +94,13 @@ module.exports = {
       __VUE_PROD_DEVTOOLS__: false,
       'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV),
     }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     {
+    //       from: path.resolve(__dirname, '../public/assets/admin'),
+    //       to: path.resolve(__dirname, '../dist/admin'),
+    //     }
+    //   ]
+    // })
   ]
 }

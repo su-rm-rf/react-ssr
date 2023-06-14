@@ -6,7 +6,11 @@ module.exports = merge(common, {
   devServer: {
     port: 4240,
     hot: true,
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+        { from: /./, to: '/admin/' }
+      ]
+    },
   },
   devtool: 'eval-cheap-module-source-map',
 })

@@ -1,22 +1,22 @@
 import { Column, Entity, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"
 
-import { Category2 } from './Category2'
+import { Goods } from './Goods'
 
 @Entity()
-export class Category1 {
+export class Category {
   
   // @Column()
   // @PrimaryColumn()
   @PrimaryGeneratedColumn({
     name: 'id'
   })
-  // @OneToOne(type => Category2)
+  // @OneToOne(type => Goods)
   id?: number
 
   @Column()
   name?: string
 
-  @OneToMany(type => Category2, category2 => category2.category1)
-  category2s?: Category2[]
+  @OneToMany(type => Goods, goods => goods.category)
+  goods_list?: Goods[]
 
 }

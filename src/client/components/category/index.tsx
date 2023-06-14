@@ -23,7 +23,7 @@ export default () => {
               <div>{ item.name }</div>
               <nav>
                 {
-                  item.category2s.map(item2 => 
+                  item.goods_list.map(item2 => 
                     <Link to={ `/category/${item2.id}` } key={ item2.id }>{ item2.name }</Link>
                   )
                 }

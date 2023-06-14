@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <header class="header">头部</header>
+    <div>系统公告</div>
   </div>
 </template>
 
