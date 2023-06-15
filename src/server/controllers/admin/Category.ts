@@ -7,6 +7,7 @@ export default class CategoryController {
     const repository = AppDataSource.getRepository(Category)
 
     const list = await repository.find({ relations: ['goods_list'] })
+    ctx.cookies.set('track', list.length)
     ctx.body = list
   }
   
